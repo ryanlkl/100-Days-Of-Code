@@ -1,6 +1,5 @@
 # import class from module
 from turtle import Turtle, Screen
-
 #Create a new class
 lord_voldetort = Turtle()
 
@@ -29,7 +28,7 @@ print("------------------------")
 # first installl into python
 # to do this:
  # 1. Locate Python path
- # 2. Cipy Path before Python
+ # 2. Copy Path before Python
  # 3. Open terminal
  # 4. cd to file location
 # 5. Update pip and install packages (python -m pip install --upgrade pip)
