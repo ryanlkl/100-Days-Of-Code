@@ -1,4 +1,5 @@
 from turtle import *
+import random
 
 timmy = Turtle()
 
@@ -57,6 +58,24 @@ timmy.color("blue")
 #    timmy.fd(100)
 #    timmy.left(36)
 
-
+# Random Walk
 screen = Screen()
+screen.colormode(255)
+
+def random_colour():
+  r = random.randint(0,255)
+  g = random.randint(0,255)
+  b = random.randint(0,255)
+  random_colour = (r,g,b)
+  return random_colour
+
+directions = [0,90,180,270]
+
+for moves in range(200):
+  timmy.pen(pensize=7)
+  timmy.pencolor(random_colour())
+  timmy.forward(30)
+  timmy.left(directions[random.randint(0,3)])
+
+
 screen.exitonclick()
