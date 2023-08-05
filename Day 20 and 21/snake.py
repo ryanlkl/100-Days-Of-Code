@@ -1,34 +1,45 @@
-from turtle import Screen, Turtle
-import time
+from turtle import Turtle
 
-screen = Screen()
-screen.setup(width=600,height=600)
-screen.bgcolor("Black")
-screen.title("Snake")
-screen.tracer(0)
+START_POSITION = [(0,0),(-20,0),(-40,0)]
+MOVE_DISTANCE = 10
+UP = 90
+DOWN = 270
+LEFT = 180
+RIGHT = 0
 
-# Create snake body
+class Snake:
+    def __init__(self):
+        self.segments = []
+        self.create_snake()
+        self.head = self.segments[0]
+        
+    def create_snake(self):
+        for position in START_POSITION:
+            dot = Turtle(shape="square")
+            dot.penup()
+            dot.color("white")
+            dot.goto(position)
+            self.segments.append(dot)
 
-starting_x = 0
-segments = []
+    def move(self):
+        for seg in range(len(self.segments) - 1,0,-1):
+            new_x = self.segments[seg-1].xcor()
+            new_y = self.segments[seg-1].ycor()
+            self.segments[seg].goto(x=new_x, y=new_y)
+        self.head.forward(MOVE_DISTANCE)
 
-for segment in range(0,3):
-    dot = Turtle(shape="square")
-    dot.penup()
-    dot.color("white")
-    dot.goto(x=starting_x,y=0)
-    segments.append(dot)
-    starting_x -= 20
+    def up(self):
+        if self.head.heading() != DOWN:
+          self.head.seth(UP)
 
-screen.update()
+    def down(self):
+        if self.head.heading() != UP:
+          self.head.seth(DOWN)
 
-# Move snake automatically
-game_is_on = True
-while game_is_on:
-    screen.update()
-    time.sleep(0.05)
-    for seg in segments:
-        seg.forward(10)
+    def left(self):
+        if self.head.heading() != RIGHT:
+          self.head.seth(LEFT)
 
-
-screen.exitonclick()
+    def right(self):
+        if self.head.heading() != LEFT:
+          self.head.seth(RIGHT)
