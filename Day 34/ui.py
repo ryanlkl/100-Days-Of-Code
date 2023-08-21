@@ -26,14 +26,12 @@ class QuizInterface():
         self.false_button = None
 
     def show(self):
-        print("Showing UI")
         questions = Data(self.category,self.no_questions,self.difficulty)
         question_bank = questions.send_request()
         self.quiz = QuizBrain(question_bank)
         self.create_ui()
 
     def create_ui(self):
-        print("Creating UI")
         self.score_label = Label(
             text="Score: 0",
             fg="white",
@@ -53,17 +51,14 @@ class QuizInterface():
 
         self.true_image = PhotoImage(file="Day 34\\images\\true.png")
         self.false_image = PhotoImage(file="Day 34\\images\\false.png")
-        print("Got photos")
         self.true_button = Button(image=self.true_image,highlightthickness=0,command=self.true_pressed)
         self.false_button = Button(image=self.false_image,highlightthickness=0,command=self.false_pressed)
         self.true_button.grid(row=2,column=0)
         self.false_button.grid(row=2,column=1)
-        print("Made buttons")
 
         self.get_next_question()
 
     def get_next_question(self):
-        print("Generating question")
         self.canvas.config(bg="white")
         if self.quiz.still_has_questions():
           self.score_label.config(text=f"Score: {self.quiz.score}")
