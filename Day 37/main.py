@@ -1,7 +1,8 @@
 import requests
 import datetime as dt
+from decouple import config
 
-USER_TOKEN = "ineedtohidethisinanenvendpoint15032003"
+USER_TOKEN = config("USER_TOKEN")
 pixela_endpoint = "https://pixe.la/v1/users"
 USERNAME = "rynlkl"
 
