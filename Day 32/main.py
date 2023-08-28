@@ -2,6 +2,7 @@ import smtplib
 import datetime as dt
 import random
 from email.message import EmailMessage
+from decouple import config
 
 # my_email = "pythonsmtp94@gmail.com"
 # password = "pkzqmcqayhihxbns"
@@ -22,8 +23,9 @@ from email.message import EmailMessage
 
 # date_of_birth = dt.datetime(year=2003,month=3,day=15)
 
-MY_EMAIL = "pythonsmtp94@gmail.com"
-MY_PASSWORD = "pkzqmcqayhihxbns"
+PRIVATE_EMAIL = config("PRIVATE_EMAIL")
+MY_EMAIL = config("MY_EMAIL")
+MY_PASSWORD = config("MY_PASSWORD")
 SUBJECT = "Monday Motivation"
 
 day_today = dt.datetime.now().weekday()
