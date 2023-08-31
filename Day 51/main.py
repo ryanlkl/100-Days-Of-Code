@@ -1,13 +1,14 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
+from decouple import config
 import time
 
 PROMISED_DOWN = 20
 PROMISED_UP = 10
-TWITTER_EMAIL = "ryanla94@gmail.com"
-TWITTER_PASSWORD = "Ryanjessica2003"
-TWITTER_PHONE = "07307288855"
+TWITTER_EMAIL = config("TWITTER_EMAIL")
+TWITTER_PASSWORD = config("TWITTER_PASSWORD")
+TWITTER_PHONE = config("TWITTER_PHONE")
 
 
 class InternetSpeedTwitterBot():
